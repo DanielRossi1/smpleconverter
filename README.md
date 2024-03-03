@@ -6,21 +6,21 @@ Di principio, la conversione dei modelli è progettata per prendere in input le 
 2.  Scaricare i modelli SMPL (MALE, FEMALE, NEUTRAL), rinominarli in (SMPL_MALE.pkl, SMPL_FEMALE.pkl, SMPL_NEUTRAL.pkl) e metterli in transfer_data/meshes/smpl: https://smpl.is.tue.mpg.de/
 3.  Scaricare la KID TEMPLATE e rinominarla in SMPLX_KID_TEMPLATE.npy, e metterla in transfer_data/meshes/smplx: https://agora.is.tue.mpg.de/
 
-Il formato dovrà essere il seguente
-```
-transfer_data
-├── meshes
-│   ├── smpl
-│   ├── smplx
-├── smpl2smplh_def_transfer.pkl
-├── smpl2smplx_deftrafo_setup.pkl
-├── smplh2smpl_def_transfer.pkl
-├── smplh2smplx_deftrafo_setup.pkl
-├── smplx2smpl_deftrafo_setup.pkl
-├── smplx2smplh_deftrafo_setup.pkl
-├── smplx_mask_ids.npy
-```
-dove i .pkl di conversione aggiuntivi sono da scaricare sempre dal repository di SMPL-X (http://smpl-x.is.tue.mpg.de/)
+     Il formato dovrà essere il seguente
+     ```
+     transfer_data
+     ├── meshes
+     │   ├── smpl
+     │   ├── smplx
+     ├── smpl2smplh_def_transfer.pkl
+     ├── smpl2smplx_deftrafo_setup.pkl
+     ├── smplh2smpl_def_transfer.pkl
+     ├── smplh2smplx_deftrafo_setup.pkl
+     ├── smplx2smpl_deftrafo_setup.pkl
+     ├── smplx2smplh_deftrafo_setup.pkl
+     ├── smplx_mask_ids.npy
+     ```
+     dove i .pkl di conversione aggiuntivi sono da scaricare sempre dal repository di SMPL-X (http://smpl-x.is.tue.mpg.de/)
 
 4. per buildare:
      ```
