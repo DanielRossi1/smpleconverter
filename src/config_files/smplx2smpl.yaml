@@ -1,6 +1,8 @@
 datasets:
+    name: "smplx"
     mesh_folder:
-        data_folder: '/home/daniel/src/models/smplx/'
+        data_folder: '/home/daniel/Data/PROCESSED_DATA/s05/s05_a08/smplx/'
+        
 deformation_transfer_path: 'transfer_data/smplx2smpl_deftrafo_setup.pkl'
 mask_ids_fname: ''
 summary_steps: 100
@@ -17,7 +19,7 @@ body_model:
     model_type: "smpl"
     gender: "male"
     ext: 'pkl'
-    folder: "transfer_data/body_models"
+    folder: "/home/daniel/src/transfer_data/meshes"
     use_compressed: False
     use_face_contour: False
     smpl:

@@ -15,3 +15,4 @@
 # Contact: Vassilis Choutas, vassilis.choutas@tuebingen.mpg.de
 
 from .mesh import MeshFolder
+from .smplx import SMPLXDataset

@@ -20,7 +20,7 @@ import sys
 import torch
 import torch.utils.data as dutils
 from .datasets import MeshFolder
-
+from .datasets import SMPLXDataset
 from loguru import logger
 
 
@@ -32,6 +32,8 @@ def build_dataloader(exp_cfg):
         value = mesh_folder_cfg[key]
         logger.info(f'{key}: {value}\n')
         dataset = MeshFolder(**mesh_folder_cfg)
+    elif dset_name == 'smplx':
+        dataset = SMPLXDataset(exp_cfg)
     else:
         raise ValueError(f'Unknown dataset: {dset_name}')
 

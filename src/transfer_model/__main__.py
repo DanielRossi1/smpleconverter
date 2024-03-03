@@ -31,7 +31,7 @@ from .config import parse_args
 from .data import build_dataloader
 from .transfer_model import run_fitting
 from .utils import read_deformation_transfer, np_mesh_to_o3d
-
+from IPython import embed
 
 def main() -> None:
     exp_cfg = parse_args()
@@ -55,6 +55,7 @@ def main() -> None:
     os.makedirs(output_folder, exist_ok=True)
 
     model_path = exp_cfg.body_model.folder
+    #embed()
     body_model = build_layer(model_path, **exp_cfg.body_model)
     logger.info(body_model)
     body_model = body_model.to(device=device)
@@ -76,13 +77,11 @@ def main() -> None:
     data_obj_dict = build_dataloader(exp_cfg)
 
     dataloader = data_obj_dict['dataloader']
-
     for ii, batch in enumerate(tqdm(dataloader)):
         for key in batch:
             if torch.is_tensor(batch[key]):
                 batch[key] = batch[key].to(device=device)
-        var_dict = run_fitting(
-            exp_cfg, batch, body_model, def_matrix, mask_ids)
+        var_dict = run_fitting(exp_cfg, batch, body_model, def_matrix, mask_ids)
         paths = batch['paths']
 
         for ii, path in enumerate(paths):
@@ -93,10 +92,8 @@ def main() -> None:
             with open(output_path, 'wb') as f:
                 pickle.dump(var_dict, f)
 
-            output_path = osp.join(
-                output_folder, f'{osp.splitext(fname)[0]}.obj')
-            mesh = np_mesh_to_o3d(
-                var_dict['vertices'][ii], var_dict['faces'])
+            output_path = osp.join(output_folder, f'{osp.splitext(fname)[0]}.obj')
+            mesh = np_mesh_to_o3d(var_dict['vertices'][ii], var_dict['faces'])
             o3d.io.write_triangle_mesh(output_path, mesh)
 
 

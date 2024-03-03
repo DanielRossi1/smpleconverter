@@ -27,8 +27,9 @@ import trimesh
 import torch
 from torch.utils.data import Dataset
 from loguru import logger
+from smplx import SMPLX
 
-
+from IPython import embed
 class MeshFolder(Dataset):
     def __init__(
         self,
@@ -40,10 +41,10 @@ class MeshFolder(Dataset):
             topology
         '''
         if exts is None:
-            exts = ['.obj', '.ply']
+            exts = ['.pkl']
 
         self.data_folder = osp.expandvars(data_folder)
-
+        
         logger.info(
             f'Building mesh folder dataset for folder: {self.data_folder}')
 
@@ -53,6 +54,7 @@ class MeshFolder(Dataset):
             if any(fname.endswith(ext) for ext in exts)
         ])
         self.num_items = len(self.data_paths)
+        embed()
 
     def __len__(self) -> int:
         return self.num_items
