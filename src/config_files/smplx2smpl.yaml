@@ -25,3 +25,5 @@ body_model:
     smpl:
         betas:
             num: 10
+
+batch_size: 16

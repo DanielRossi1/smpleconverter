@@ -32,6 +32,7 @@ from .data import build_dataloader
 from .transfer_model import run_fitting
 from .utils import read_deformation_transfer, np_mesh_to_o3d
 from IPython import embed
+import gc
 
 def main() -> None:
     exp_cfg = parse_args()
@@ -87,15 +88,14 @@ def main() -> None:
         for ii, path in enumerate(paths):
             _, fname = osp.split(path)
 
-            output_path = osp.join(
-                output_folder, f'{osp.splitext(fname)[0]}.pkl')
+            output_path = osp.join(output_folder, f'{osp.splitext(fname)[0]}.pkl')
             with open(output_path, 'wb') as f:
                 pickle.dump(var_dict, f)
 
-            output_path = osp.join(output_folder, f'{osp.splitext(fname)[0]}.obj')
-            mesh = np_mesh_to_o3d(var_dict['vertices'][ii], var_dict['faces'])
-            o3d.io.write_triangle_mesh(output_path, mesh)
-
+            # output_path = osp.join(output_folder, f'{osp.splitext(fname)[0]}.obj')
+            # mesh = np_mesh_to_o3d(var_dict['vertices'][ii], var_dict['faces'])
+            # o3d.io.write_triangle_mesh(output_path, mesh)
+            gc.collect()
 
 if __name__ == '__main__':
     main()
