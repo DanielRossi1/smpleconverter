@@ -387,9 +387,8 @@ def run_fitting(
         else:
             # Simply pass the variable
             param_dict[key] = var
-
-    body_model_output = body_model(
-        return_full_pose=True, get_skin=True, **param_dict)
+    from IPython import embed
+    body_model_output = body_model(return_full_pose=True, get_skin=False, **param_dict)
     var_dict.update(body_model_output)
     var_dict['faces'] = body_model.faces
 

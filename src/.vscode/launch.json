@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "franco",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "agora_evaluation/agora_evaluation/franco.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--data-folder", "/home/daniel/Data/PROCESSED_DATA/s05/s05_a08",
+                "--models-folder", "/home/daniel/src/transfer_data/meshes/smplx"
+            ]
+        }
+    ]
+}
